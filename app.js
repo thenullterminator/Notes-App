@@ -4,6 +4,7 @@ const fs=require("fs");
 const yg=require("yargs");
 const cd=require("./commands.js");
 
+
 var input=yg.argv;
 var command=input._[0];
 
@@ -20,6 +21,10 @@ if(command==="add")
         console.log("Title: ",currentnote.title);
         console.log("Body: ",currentnote.body);
     }
+}
+else if(command === "remove")
+{
+    cd.remove(input.title);
 }
 
 

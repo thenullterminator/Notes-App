@@ -1,5 +1,5 @@
 const fs=require("fs");
-
+const _=require("lodash");
 
 function fetchnotes()
 {
@@ -27,7 +27,7 @@ var Add=(title,body)=>{
         body:body
     };
 
-    allnotes=fetchnotes();
+    var allnotes=fetchnotes();
     
 
     var dupnotes=allnotes.filter((currentnote)=>currentnote.title===title);
@@ -41,7 +41,18 @@ var Add=(title,body)=>{
 };
 
 
+var remove=(title)=>{
+
+    var allnotes=fetchnotes();
+    
+    allnotes=_.remove(allnotes,(notes)=>{
+        return notes.title!=title;
+    });
+    savenotes(allnotes);
+};
+
 
 module.exports={
-    Add:Add
+    Add:Add,
+    remove:remove
 }
