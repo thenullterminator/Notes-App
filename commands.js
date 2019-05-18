@@ -1,13 +1,8 @@
 const fs=require("fs");
 
 
-var Add=(title,body)=>{
-
-    var currentnote={
-        title:title,
-        body:body
-    };
-
+function fetchnotes()
+{
     var allnotes=[];
     try
     {
@@ -15,11 +10,38 @@ var Add=(title,body)=>{
     }
     catch(e){}
 
+    return allnotes;
+}
+
+function savenotes(allnotes)
+{
+    fs.writeFileSync("./notes-data.json",JSON.stringify(allnotes));
+}
+
+
+
+var Add=(title,body)=>{
+
+    var currentnote={
+        title:title,
+        body:body
+    };
+
+    allnotes=fetchnotes();
+    
+
     var dupnotes=allnotes.filter((currentnote)=>currentnote.title===title);
 
     if(dupnotes.length===0)
     {
         allnotes.push(currentnote);
-        fs.writeFileSync("./notes-data.json",JSON.stringify(allnotes));
+        savenotes(allnotes);
+        return currentnote;
     }
 };
+
+
+
+module.exports={
+    Add:Add
+}

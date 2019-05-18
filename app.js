@@ -9,9 +9,17 @@ var command=input._[0];
 
 console.log("Your Command: ",command);
 
-if(command==="Add")
+if(command==="add")
 {
-    cd.Add(input.title,input.body);
+    var currentnote=cd.Add(input.title,input.body);
+    if(currentnote==undefined)
+    console.log("Node already exist");
+    else
+    {
+        console.log("Node Created");
+        console.log("Title: ",currentnote.title);
+        console.log("Body: ",currentnote.body);
+    }
 }
 
 
