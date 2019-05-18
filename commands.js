@@ -56,7 +56,21 @@ var remove=(title)=>{
 };
 
 
+var read=(title)=>{
+
+    var allnotes=fetchnotes();
+    var fnotes=allnotes.filter((note)=> note.title===title);
+    if(fnotes.length!==0)
+    return fnotes[0].body;
+};
+
+var list=()=>{
+ return fetchnotes();
+};
+
 module.exports={
     Add:Add,
-    remove:remove
+    remove:remove,
+    read:read,
+    list:list
 }

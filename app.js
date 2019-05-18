@@ -29,6 +29,23 @@ else if(command === "remove")
     console.log(result===1? "Note is removed" : "Note not found");
 
 }
+else if(command==="read")
+{
+    var result=cd.read(input.title);
+    if(result)
+    console.log(result);
+    else
+    console.log("Note not present.");
+}
+else if(command==="list")
+{
+    var result=cd.list();
+
+    result.forEach((note) => {
+        console.log("Title: ",note.title);
+        console.log("Body: ",note.body);
+    });
+}
 
 
 
