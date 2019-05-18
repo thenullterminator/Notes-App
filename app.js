@@ -4,8 +4,30 @@ const fs=require("fs");
 const yg=require("yargs");
 const cd=require("./commands.js");
 
+var titleop={
+    describe:"title of node",
+    demand:true,
+    alias:'t'
+};
 
-var input=yg.argv;
+var input=yg
+.command('list',"list all the existing notes")
+.command("remove","remove a existing node",{
+    title:titleop
+})
+.command("read","read a existing node",{
+    title:titleop
+})
+.command("add","add a new existing node",{
+    title:titleop,
+    body:{
+        describe:"body of new node",
+        demand:true,
+        alias:'b'
+    },
+        
+})
+.argv;
 var command=input._[0];
 
 console.log("Your Command: ",command);
