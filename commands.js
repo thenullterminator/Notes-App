@@ -45,10 +45,14 @@ var remove=(title)=>{
 
     var allnotes=fetchnotes();
     
-    allnotes=_.remove(allnotes,(notes)=>{
-        return notes.title!=title;
-    });
-    savenotes(allnotes);
+    var fallnotes=allnotes.filter((note)=> note.title!==title);
+    savenotes(fallnotes);
+
+    if(fallnotes.length === allnotes.length)
+    return 0;
+    else
+    return 1;
+
 };
 
 

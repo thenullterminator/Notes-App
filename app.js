@@ -24,7 +24,10 @@ if(command==="add")
 }
 else if(command === "remove")
 {
-    cd.remove(input.title);
+    var result=cd.remove(input.title);
+
+    console.log(result===1? "Note is removed" : "Note not found");
+
 }
 
 
